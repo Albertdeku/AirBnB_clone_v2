@@ -1,34 +1,28 @@
 #!/usr/bin/python3
 """
-script that starts a Flask web application
+Import flask
 """
-
 from flask import Flask
-
 app = Flask(__name__)
 
-app.strict_slashes = False
 
-
-@app.route('/')
-def hello():
-    """This function returns Hello HBNB!"""
+@app.route('/', strict_slashes=False)
+def Hello_HBNB():
+    """created my first route"""
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb')
+@app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """returns HBNB"""
+    """added a new route that display something else"""
     return 'HBNB'
 
 
-@app.route('/c/<text>')
-def c_is_fun(text):
-    """
-    Return desired string for /c/<text> route, replace '_' with space
-    """
-    return "C {}".format(text.replace("_", " "))
+@app.route('/c/<text>', strict_slashes=False)
+def c_way(text):
+    """display C then followed by any value appeneded to it"""
+    return 'C ' + text.replace('_', ' ')
 
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='5000', debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

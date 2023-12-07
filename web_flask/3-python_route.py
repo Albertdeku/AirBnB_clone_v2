@@ -1,40 +1,40 @@
 #!/usr/bin/python3
 """
-script that starts a Flask web application
+Import flask
 """
 from flask import Flask
-
-
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def hello():
-    """This function returns Hello HBNB!"""
-    return "Hello HBNB!"
+def Hello_HBNB():
+    """created my first route"""
+    return 'Hello HBNB!'
 
 
-@app.route("/hbnb", strict_slashes=False)
-def show_string():
-    """returns HBNB"""
-    return "HBNB"
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """added a new route that display something else"""
+    return 'HBNB'
 
 
-@app.route("/c/<text>", strict_slashes=False)
-def show_text_replace(text):
-    """ Return desired string for /c/<text> route, replace '_' with space """
-    text_replace = text.replace('_', ' ')
-    return "C {}".format(text_replace)
+@app.route('/c/<text>', strict_slashes=False)
+def c_way(text):
+    """
+    display C then followed by any value appeneded to it
+    """
+    return 'C ' + text.replace('_', ' ')
 
 
-@app.route("/python", strict_slashes=False)
-@app.route("/python/<text>", strict_slashes=False)
-def show_text_default(text="is cool"):
-    """ Return desired string for /python/<text> route
-    replace '_' with space """
-    text = text.replace('_', ' ')
-    return "Python {}".format(text)
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def python(text='is cool'):
+    """
+    declare two route that has a default string
+    but can change when needed
+    """
+    return 'Python ' + text.replace('_', ' ')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
